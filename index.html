@@ -35,11 +35,11 @@
     }
 
     .rotate-left {
-      transform: rotate(-45deg);
+      transform: rotate(-25deg);
     }
 
     .rotate-right {
-      transform: rotate(45deg);
+      transform: rotate(65deg);
     }
 
     .subtitle {
@@ -108,7 +108,7 @@
       face.classList.toggle("rotate-left", left);
       face.classList.toggle("rotate-right", !left);
       left = !left;
-    }, 5000);
+    }, 3000);
 
     function checkPassword() {
       const input = document.getElementById("password").value;
