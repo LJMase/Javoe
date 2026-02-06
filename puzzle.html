@@ -2,42 +2,119 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>You Did It 💖</title>
+  <title>Valentine Puzzle 💖</title>
   <style>
     body {
-      background: #fff;
+      background: #fff0f5;
       font-family: Arial, sans-serif;
       text-align: center;
-      padding: 80px;
+      padding: 40px;
     }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 40px;
+    }
+
+    .riddles-container {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 60px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .riddle-box {
+      background: #ffe4e1;
+      padding: 20px;
+      border-radius: 15px;
+      width: 250px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .riddle-box p {
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .riddle-box input {
+      font-size: 1rem;
+      padding: 8px;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    .feedback {
+      height: 20px;
+      font-weight: bold;
+    }
+
+    .cipher-image {
+      margin-bottom: 60px;
+    }
+
+    .bottom-buttons {
+      margin-top: 40px;
+    }
+
+    button {
+      font-size: 1.1rem;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 8px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    }
+
+    button:hover {
+      background-color: #ff85c1;
+    }
+
   </style>
 </head>
 <body>
 
-  <h1>You solved it 💖</h1>
+  <h1>Solve the Puzzle 💌</h1>
 
-  <p>
-    The answer you seek<br>
-    Is the name that you speak<br>
-    Not written, not signed—<br>
-    Just something that’s mine.
-  </p>
+  <div class="riddles-container">
 
-  <p>
-    I’m not a place<br>
-    But I’m where we are<br>
-    We’ll always be this<br>
-    No matter how far.
-  </p>
+    <div class="riddle-box">
+      <p>The answer you seek is the name that you speak</p>
+      <input type="text" id="riddle1" placeholder="Answer 1">
+      <div class="feedback" id="feedback1"></div>
+    </div>
 
-  <p>
-    I don’t have an end<br>
-    Or a final sign<br>
-    It keeps going on—<br>
-    I love you this much ♾️
-  </p>
+    <div class="riddle-box">
+      <p>I'm not a place but I'm where we are, we'll always be this no matter how far</p>
+      <input type="text" id="riddle2" placeholder="Answer 2">
+      <div class="feedback" id="feedback2"></div>
+    </div>
 
-  <p><em>This is only the beginning…</em></p>
+    <div class="riddle-box">
+      <p>I don't have an end or a final sign, I love you this much</p>
+      <input type="text" id="riddle3" placeholder="Answer 3">
+      <div class="feedback" id="feedback3"></div>
+    </div>
 
-</body>
-</html>
+  </div>
+
+  <div class="cipher-image">
+    <img src="cipher.png" alt="Letter to Number Cipher" width="300">
+  </div>
+
+  <div class="bottom-buttons">
+    <button onclick="checkAnswers()">Check Answers</button>
+    <button onclick="window.location.href='index.html'">Back</button>
+  </div>
+
+  <script>
+    const answers = ["pookie", "together", "infinity"];
+
+    function checkAnswers() {
+      const r1 = document.getElementById("riddle1").value.trim().toLowerCase();
+      const r2 = document.getElementById("riddle2").value.trim().toLowerCase();
+      const r3 = document.getElementById("riddle3").value.trim()
