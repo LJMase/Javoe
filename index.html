@@ -26,12 +26,13 @@
     }
 
     .heart {
-      font-size: 3rem;
+      font-size: 4.5rem;
     }
 
     .face {
       width: 200px;
       transition: transform 1s ease-in-out;
+      transform: rotate(20deg);
     }
 
     .rotate-left {
@@ -43,20 +44,20 @@
     }
 
     .subtitle {
-      font-size: 1.6rem;
+      font-size: 2rem;
       margin: 40px 0;
       font-weight: bold;
     }
 
     input {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       padding: 10px;
       width: 180px;
       text-align: center;
     }
 
     button {
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       padding: 10px 20px;
       margin-top: 15px;
       cursor: pointer;
@@ -79,7 +80,7 @@
   <div class="face-container">
     <div class="heart">❤️</div>
 
-    <img src="face.png" alt="Me" id="face" class="face rotate-left">
+    <img src="face.png" alt="Me" id="face" class="face">
 
     <div class="heart">❤️</div>
   </div>
@@ -102,12 +103,12 @@
 
   <script>
     const face = document.getElementById("face");
-    let left = true;
+    let right = true;
 
     setInterval(() => {
-      face.classList.toggle("rotate-left", left);
-      face.classList.toggle("rotate-right", !left);
-      left = !left;
+      face.classList.toggle("rotate-right", left);
+      face.classList.toggle("rotate-left", !left);
+      right = !right;
     }, 3000);
 
     function checkPassword() {
