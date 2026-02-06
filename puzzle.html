@@ -30,6 +30,7 @@
       border-radius: 15px;
       width: 250px;
       box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+      white-space: pre-line; /* preserve line breaks */
     }
 
     .riddle-box p {
@@ -83,19 +84,23 @@
   <div class="riddles-container">
 
     <div class="riddle-box">
-      <p>The answer you seek is the name that you speak</p>
+      <p>The answer you seek<br>
+      is the name that you speak.<br>
+      It starts with a P and ends with IE.</p>
       <input type="text" id="riddle1" placeholder="Answer 1">
       <div class="feedback" id="feedback1"></div>
     </div>
 
     <div class="riddle-box">
-      <p>I'm not a place but I'm where we are, we'll always be this no matter how far</p>
+      <p>I'm not a place but I'm where we are,<br>
+      we'll always be this no matter how far.</p>
       <input type="text" id="riddle2" placeholder="Answer 2">
       <div class="feedback" id="feedback2"></div>
     </div>
 
     <div class="riddle-box">
-      <p>I don't have an end or a final sign, I love you this much</p>
+      <p>It never stops, it goes on forever.<br>
+      It's always more, I love you to ___ and beyond.</p>
       <input type="text" id="riddle3" placeholder="Answer 3">
       <div class="feedback" id="feedback3"></div>
     </div>
@@ -117,4 +122,13 @@
     function checkAnswers() {
       const r1 = document.getElementById("riddle1").value.trim().toLowerCase();
       const r2 = document.getElementById("riddle2").value.trim().toLowerCase();
-      const r3 = document.getElementById("riddle3").value.trim()
+      const r3 = document.getElementById("riddle3").value.trim().toLowerCase();
+
+      document.getElementById("feedback1").textContent = r1 === answers[0] ? "✅ Correct!" : "❌ Try again";
+      document.getElementById("feedback2").textContent = r2 === answers[1] ? "✅ Correct!" : "❌ Try again";
+      document.getElementById("feedback3").textContent = r3 === answers[2] ? "✅ Correct!" : "❌ Try again";
+    }
+  </script>
+
+</body>
+</html>
