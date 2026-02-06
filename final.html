@@ -11,13 +11,15 @@
       padding: 40px 20px;
     }
 
+    /* Top header */
     h1 {
-      font-size: 3.5rem;
+      font-size: 3rem;  /* slightly smaller than before */
       margin-top: 20px;
       margin-bottom: 30px;
-      color: #1E90FF; /* headline blue */
+      color: #87CEFA; /* LightSkyBlue, softer than before */
     }
 
+    /* Image styling */
     .image-container {
       margin-bottom: 40px;
     }
@@ -29,10 +31,12 @@
       box-shadow: 2px 2px 15px rgba(0,0,0,0.2);
     }
 
+    /* Main message */
     h2 {
-      font-size: 3rem;
-      color: #4682B4; /* subheadline blue */
+      font-size: 3.5rem; /* bigger to be primary focus */
+      color: #1E90FF; /* DodgerBlue, brighter for emphasis */
       margin-bottom: 50px;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.2); /* subtle glow for readability */
     }
 
     .back-button {
@@ -51,7 +55,7 @@
     }
 
     button:hover {
-      background-color: #4682B4;
+      background-color: #4682B4; /* darker blue on hover */
     }
 
     /* Countdown timer */
@@ -74,14 +78,18 @@
 </head>
 <body>
 
+  <!-- Top header, subtle -->
   <h1>You have proven to be the Smart and Beautiful Jackie!</h1>
 
+  <!-- Image -->
   <div class="image-container">
-    <img src="cat.png" alt="Valentine Image">
+    <img src="valentine.png" alt="Valentine Image">
   </div>
 
+  <!-- Primary focus -->
   <h2>Will you be my valentine?</h2>
 
+  <!-- Back button -->
   <div class="back-button">
     <button onclick="window.location.href='index.html'">Back</button>
   </div>
@@ -101,7 +109,6 @@
       let year = now.getFullYear();
       const valentines = new Date(`February 14, ${year} 00:00:00`);
 
-      // If Valentine's already passed this year, count down to next year
       if (now > valentines) {
         valentines.setFullYear(year + 1);
       }
@@ -117,7 +124,6 @@
         `${days}d ${hours}h ${minutes}m ${seconds}s until Valentine's Day`;
     }
 
-    // Update countdown every second
     updateCountdown();
     setInterval(updateCountdown, 1000);
   </script>
