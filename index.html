@@ -2,51 +2,121 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>One Last Step 💌</title>
+  <title>Happy Valentine’s Day 💘</title>
+
   <style>
     body {
       background: #fff0f5;
       font-family: Arial, sans-serif;
       text-align: center;
-      padding-top: 100px;
+      padding-top: 40px;
     }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 30px;
+    }
+
+    .face-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .heart {
+      font-size: 3rem;
+    }
+
+    .face {
+      width: 200px;
+      transition: transform 1s ease-in-out;
+    }
+
+    .rotate-left {
+      transform: rotate(-45deg);
+    }
+
+    .rotate-right {
+      transform: rotate(45deg);
+    }
+
+    .subtitle {
+      font-size: 1.4rem;
+      margin: 20px 0;
+      font-weight: bold;
+    }
+
     input {
       font-size: 1.2rem;
       padding: 10px;
-      width: 150px;
+      width: 180px;
       text-align: center;
     }
+
     button {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       padding: 10px 20px;
-      margin-top: 20px;
+      margin-top: 15px;
       cursor: pointer;
     }
+
     .error {
       color: red;
-      margin-top: 15px;
+      margin-top: 10px;
+    }
+
+    .bottom-button {
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
 
-  <h1>💌 One Last Step</h1>
-  <p>Three letters. Three numbers.</p>
+  <h1>Happy Valentine’s Day 💖</h1>
 
-  <input type="password" id="password" placeholder="Password">
+  <div class="face-container">
+    <div class="heart">❤️</div>
+
+    <img src="me.png" alt="Me" id="face" class="face rotate-left">
+
+    <div class="heart">❤️</div>
+  </div>
+
+  <div class="subtitle">
+    For Jackie only! Enter the secret code!
+  </div>
+
+  <input type="password" id="password" placeholder="Secret code">
   <br>
-  <button onclick="checkPassword()">Unlock</button>
+  <button onclick="checkPassword()">Unlock 💌</button>
 
-  <p class="error" id="error"></p>
+  <div class="error" id="error"></div>
+
+  <div class="bottom-button">
+    <button onclick="window.location.href='puzzle.html'">
+      The puzzle for the secret code!
+    </button>
+  </div>
 
   <script>
+    const face = document.getElementById("face");
+    let left = true;
+
+    setInterval(() => {
+      face.classList.toggle("rotate-left", left);
+      face.classList.toggle("rotate-right", !left);
+      left = !left;
+    }, 5000);
+
     function checkPassword() {
       const input = document.getElementById("password").value;
       if (input === "16209") {
         window.location.href = "puzzle.html";
       } else {
         document.getElementById("error").textContent =
-          "Not quite… try again 💭";
+          "Hmm… not quite 💭";
       }
     }
   </script>
