@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Happy Valentine’s Day 💘</title>
-
   <style>
     body {
       background: #fff0f5;
@@ -22,7 +21,7 @@
       justify-content: center;
       align-items: center;
       gap: 80px;
-      margin-bottom: 60px;
+      margin-bottom: 40px;
     }
 
     .heart {
@@ -31,16 +30,16 @@
 
     .face {
       width: 200px;
-      transition: transform 1s ease-in-out;
-      transform: rotate(20deg);
+      transition: transform 0.8s ease-in-out;
+      transform: rotate(20deg); /* starting tilt */
     }
 
     .rotate-left {
-      transform: rotate(-5deg);
+      transform: rotate(-25deg);
     }
 
     .rotate-right {
-      transform: rotate(70deg);
+      transform: rotate(65deg);
     }
 
     .subtitle {
@@ -49,28 +48,53 @@
       font-weight: bold;
     }
 
-    input {
-      font-size: 1.4rem;
-      padding: 10px;
-      width: 180px;
-      text-align: center;
+    /* Number lock styling */
+    .lock-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+      margin-bottom: 20px;
     }
 
-    button {
-      font-size: 1.3rem;
-      padding: 10px 20px;
-      margin-top: 15px;
+    .dial {
+      font-size: 2rem;
+      padding: 10px;
+      width: 60px;
+      text-align: center;
+      border-radius: 10px;
+      border: 2px solid #ff69b4;
+      background: #fff;
       cursor: pointer;
+      appearance: none;
     }
 
     .error {
       color: red;
-      margin-top: 10px;
+      margin-top: 15px;
+      font-weight: bold;
     }
 
     .bottom-button {
       margin-top: 40px;
     }
+
+    button {
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 8px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    }
+
+    button:hover {
+      background-color: #ff85c1;
+    }
+
   </style>
 </head>
 <body>
@@ -79,45 +103,68 @@
 
   <div class="face-container">
     <div class="heart">❤️</div>
-
-    <img src="face.png" alt="Me" id="face" class="face rotate-right">
-
+    <img src="me.png" alt="Me" id="face" class="face">
     <div class="heart">❤️</div>
   </div>
 
-  <div class="subtitle">
-    For Jackie only! Enter the secret code!
-  </div>
+  <div class="subtitle">For Jackie only! Enter the secret code!</div>
 
-  <input type="password" id="password" placeholder="Secret code">
-  <br>
-  <button onclick="checkPassword()">Unlock 💌</button>
+  <!-- Number Lock -->
+  <div class="lock-container">
+    <select id="digit1" class="dial">
+      <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option>
+      <option>5</option><option>6</option><option>7</option><option>8</option><option>9</option>
+    </select>
+    <select id="digit2" class="dial">
+      <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option>
+      <option>5</option><option>6</option><option>7</option><option>8</option><option>9</option>
+    </select>
+    <select id="digit3" class="dial">
+      <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option>
+      <option>5</option><option>6</option><option>7</option><option>8</option><option>9</option>
+    </select>
+    <select id="digit4" class="dial">
+      <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option>
+      <option>5</option><option>6</option><option>7</option><option>8</option><option>9</option>
+    </select>
+    <select id="digit5" class="dial">
+      <option>0</option><option>1</option><option>2</option><option>3</option><option>4</option>
+      <option>5</option><option>6</option><option>7</option><option>8</option><option>9</option>
+    </select>
+  </div>
 
   <div class="error" id="error"></div>
 
+  <button onclick="checkLock()">Unlock 💌</button>
+
   <div class="bottom-button">
-    <button onclick="window.location.href='puzzle.html'">
-      The puzzle for the secret code!
-    </button>
+    <button onclick="window.location.href='puzzle.html'">The puzzle for the secret code!</button>
   </div>
 
   <script>
+    // Bobblehead face rotation
     const face = document.getElementById("face");
     let right = true;
-
     setInterval(() => {
       face.classList.toggle("rotate-right", right);
       face.classList.toggle("rotate-left", !right);
       right = !right;
-    }, 3000);
+    }, 2000);
 
-    function checkPassword() {
-      const input = document.getElementById("password").value;
-      if (input === "16209") {
+    // Check number lock
+    function checkLock() {
+      const password = "16209";
+      const entered =
+        document.getElementById("digit1").value +
+        document.getElementById("digit2").value +
+        document.getElementById("digit3").value +
+        document.getElementById("digit4").value +
+        document.getElementById("digit5").value;
+
+      if (entered === password) {
         window.location.href = "puzzle.html";
       } else {
-        document.getElementById("error").textContent =
-          "Hmm… not quite 💭";
+        document.getElementById("error").textContent = "Incorrect code, try again 💭";
       }
     }
   </script>
