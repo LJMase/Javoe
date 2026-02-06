@@ -5,17 +5,17 @@
   <title>Valentine Reveal 💖</title>
   <style>
     body {
-      background: #fff0f5; /* light pink background */
+      background: #fff0f5;
       font-family: Arial, sans-serif;
       text-align: center;
-      padding: 40px 20px; /* less padding on top to bring headline up */
+      padding: 40px 20px;
     }
 
     h1 {
-      font-size: 3.5rem; /* slightly bigger */
-      margin-top: 20px;  /* closer to top */
+      font-size: 3.5rem;
+      margin-top: 20px;
       margin-bottom: 30px;
-      color: #1E90FF; /* DodgerBlue for strong contrast with pink background */
+      color: #1E90FF; /* headline blue */
     }
 
     .image-container {
@@ -30,8 +30,8 @@
     }
 
     h2 {
-      font-size: 3rem; /* bigger "Will you be my valentine?" */
-      color: #4682B4; /* SteelBlue */
+      font-size: 3rem;
+      color: #4682B4; /* subheadline blue */
       margin-bottom: 50px;
     }
 
@@ -44,14 +44,30 @@
       padding: 10px 20px;
       cursor: pointer;
       border-radius: 8px;
-      background-color: #1E90FF; /* match headline blue */
+      background-color: #1E90FF;
       color: white;
       border: none;
       box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
     }
 
     button:hover {
-      background-color: #4682B4; /* darker blue on hover */
+      background-color: #4682B4;
+    }
+
+    /* Countdown timer */
+    .countdown-container {
+      margin-top: 60px;
+      font-size: 1.5rem;
+      color: #1E90FF;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .locked-heart {
+      font-size: 3rem;
+      margin-top: 15px;
+      color: #FF1493; /* pink heart */
     }
 
   </style>
@@ -61,7 +77,7 @@
   <h1>You have proven to be the Smart and Beautiful Jackie!</h1>
 
   <div class="image-container">
-    <img src="cat.png" alt="Valentine Image">
+    <img src="valentine.png" alt="Valentine Image">
   </div>
 
   <h2>Will you be my valentine?</h2>
@@ -69,6 +85,42 @@
   <div class="back-button">
     <button onclick="window.location.href='index.html'">Back</button>
   </div>
+
+  <!-- Countdown Timer -->
+  <div class="countdown-container">
+    <div id="countdown">Loading countdown...</div>
+    <div class="locked-heart">🔒❤️</div>
+  </div>
+
+  <script>
+    // Countdown to next Valentine's Day
+    const countdownElement = document.getElementById("countdown");
+
+    function updateCountdown() {
+      const now = new Date();
+      let year = now.getFullYear();
+      const valentines = new Date(`February 14, ${year} 00:00:00`);
+
+      // If Valentine's already passed this year, count down to next year
+      if (now > valentines) {
+        valentines.setFullYear(year + 1);
+      }
+
+      const diff = valentines - now;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownElement.textContent = 
+        `${days}d ${hours}h ${minutes}m ${seconds}s until Valentine's Day`;
+    }
+
+    // Update countdown every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 
 </body>
 </html>
