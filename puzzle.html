@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Valentine Puzzle 💖</title>
+  <title>Solve the password 💖</title>
   <style>
     body {
       background: #fff0f5;
@@ -51,8 +51,15 @@
       font-weight: bold;
     }
 
-    .cipher-image {
-      margin-bottom: 60px;
+    .final-riddle {
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+      padding: 20px;
+      background: #ffe4e1;
+      border-radius: 15px;
+      display: inline-block;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+      white-space: pre-line;
     }
 
     .bottom-buttons {
@@ -79,7 +86,7 @@
 </head>
 <body>
 
-  <h1>Solve the Puzzle 💌</h1>
+  <h1>Solve the password 💌</h1>
 
   <div class="riddles-container">
 
@@ -107,8 +114,12 @@
 
   </div>
 
-  <div class="cipher-image">
-    <img src="cipher.png" alt="Letter to Number Cipher" width="300">
+  <!-- Final riddle for letter-to-number cipher -->
+  <div class="final-riddle">
+    <p>The answers matter more together than apart.<br>
+    Take the first letter of each word:<br>
+    P ___ I<br>
+    (Use the cipher: A=1, B=2, …)</p>
   </div>
 
   <div class="bottom-buttons">
@@ -127,6 +138,11 @@
       document.getElementById("feedback1").textContent = r1 === answers[0] ? "✅ Correct!" : "❌ Try again";
       document.getElementById("feedback2").textContent = r2 === answers[1] ? "✅ Correct!" : "❌ Try again";
       document.getElementById("feedback3").textContent = r3 === answers[2] ? "✅ Correct!" : "❌ Try again";
+
+      // OPTIONAL: automatically show the cipher number after all correct
+      if(r1 === answers[0] && r2 === answers[1] && r3 === answers[2]){
+        alert("All correct! Use the first letters to get the password: P T I → 16209");
+      }
     }
   </script>
 
